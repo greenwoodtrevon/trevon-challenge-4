@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+p {
+    font-size: large;
+}
+a {
+    font-size: large;
+}
+header {
+    display: flex;
+    width: 100%;
+    margin: 20px;
+    padding: 20px 35px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+header div p {
+    margin-right: 20px;
+}
+
+.content {
+    display: flex;
+    
+}
