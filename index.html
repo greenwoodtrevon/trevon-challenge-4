@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
+    <title>Coding Quiz</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
@@ -14,19 +14,20 @@
                 <a href="./high-scores.html">View High Scores</a>
             </div>
             <div>
-                <p class="timer">Time: </p>
+                <p id="time" class="timer"></p>
             </div>
         </header>
 
-        <div class="content">
-            <h1>Coding Quiz</h1>
-            <div id="answers">
-                <p>Answer coding questions before time runs out! But be careful, incorrect answers will shorten your time by 10 seconds!</p>
+        <div id="content" class="content">
+            <h1 id="big-words">Coding Quiz</h1>
+            <div id="questions">
+                Answer coding questions before time runs out! But be careful, incorrect answers will shorten your time by 10 seconds!
             </div>
-            <div class="start-button">
+            <div id="answers" class="answers">
                 <button id="start">Start</button>
             </div>
         </div>
         
     </body>
+    <script src="./assets/js/script.js"></script>
 </html>
