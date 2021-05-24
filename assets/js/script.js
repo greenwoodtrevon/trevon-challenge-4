@@ -5,6 +5,7 @@ var answers = document.querySelector('#answers');
 var startBtn = document.querySelector('#start');
 var timerEl = document.querySelector('#time');
 var rightWrong = document.querySelector('#feedback');
+var timeLeft = 60;
 
 var feedbackC = function() {
     rightWrong.textContent = "Correct!"
@@ -13,71 +14,97 @@ var feedbackI = function() {
     rightWrong.textContent = "Incorrect!"
 };
 
-/*document.getElementById('start').onclick = function() {
-    title.textContent = '';
-    questions.textContent = '';
-    answers.innerHTML = '';  
-};*/
 
 document.getElementById('start').onclick = function() {
+
+    var timeInterval = setInterval(function() {
+        if (timeLeft > 0) {
+            timerEl.textContent = 'Time: ' + timeLeft;
+            timeLeft--;
+        } else {
+            clearInterval(timeInterval)
+                // CLOSE GAME AND GO TO ENTER SCORE
+            title.textContent = "Your Score is " + timeLeft + "! Enter Your Initials"
+            rightWrong.textContent = ''
+            answers.innerHTML = "<input id='score' class'score-form'/>" + "<button class='choice' onClick='window.location.reload();'>Enter</button>";
+        }
+    }, 1000);
+
     questions.textContent = '';
     title.textContent = "Commonly used data types DO NOT include:"
-    answers.innerHTML = "<button id='incorrect1' class='choice'>Strings</button>" + "<br>" 
-    + "<button id='incorrect1' class='choice'>Booleans</button>" + "<br>" + "<button id='correct1' class='choice'>Alerts</button>" + "<br>"
-    + "<button id='incorrect1' class='choice'>Numbers</button>" + "<br>";
+    answers.innerHTML = "<button id='incorrect1' class='choice-1'>Strings</button>" + "<br>" 
+    + "<button id='incorrect1' class='choice-1'>Booleans</button>" + "<br>" + "<button id='correct1' class='choice'>Alerts</button>" + "<br>"
+    + "<button id='incorrect1' class='choice-1'>Numbers</button>" + "<br>";
     
     var correctA1 = document.querySelector('#correct1');
-    var incorrectA1 = document.querySelector('#incorrect1');
+    var incorrectA = document.querySelector('.choice-1');
     console.log(correctA1);
+
+    incorrectA.addEventListener("click", function() {
+        timeLeft -= 10;
+        feedbackI();
+    });
     
     document.getElementById('correct1').onclick = function() {
-        rightWrong.textContent = "Correct!"
+        feedbackC();
         title.textContent = "The condition in an if/else statement is enclosed with ______."
-        answers.innerHTML = "<button id='incorrect2' class='choice'>Quotes</button>" + "<br>" 
-        + "<button id='incorrect2' class='choice'>Curly Brackets</button>" + "<br>" + "<button id='correct2' class='choice'>Parentheses</button>" + "<br>"
-        + "<button id='incorrect2' class='choice'>Square Brackets</button>" + "<br>";
+        answers.innerHTML = "<button id='incorrect2' class='choice-1'>Quotes</button>" + "<br>" 
+        + "<button id='incorrect2' class='choice-1'>Curly Brackets</button>" + "<br>" + "<button id='correct2' class='choice'>Parentheses</button>" + "<br>"
+        + "<button id='incorrect2' class='choice-1'>Square Brackets</button>" + "<br>";
         
         var correctA = document.querySelector('#correct2');
-        var incorrectA = document.querySelector('#incorrect2');
         console.log(correctA);
 
         document.getElementById('correct2').onclick = function() {
+            feedbackC();
             title.textContent = "Arrays in JavaScript can be used to store ______."
-            answers.innerHTML = "<button id='incorrect3' class='choice'>Numbers and Strings</button>" + "<br>" 
-            + "<button id='incorrect3' class='choice'>Other Arrays</button>" + "<br>" + "<button id='incorrect3' class='choice'>Booleans</button>" + "<br>"
+            answers.innerHTML = "<button id='incorrect3' class='choice-1'>Numbers and Strings</button>" + "<br>" 
+            + "<button id='incorrect3' class='choice-1'>Other Arrays</button>" + "<br>" + "<button id='incorrect3' class='choice-1'>Booleans</button>" + "<br>"
             + "<button id='correct3' class='choice'>All of the Above</button>" + "<br>";
             
             var correctA = document.querySelector('#correct3');
-            var incorrectA = document.querySelector('#incorrect3');
             console.log(correctA);
 
             document.getElementById('correct3').onclick = function() {
+                feedbackC();
                 title.textContent = "String values must be enclosed in ______ when being assigned to variables."
                 answers.innerHTML = "<button id='correct4' class='choice'>Quotes</button>" + "<br>" 
-                + "<button id='incorrect4' class='choice'>Curly Brackets</button>" + "<br>" + "<button id='incorrect4' class='choice'>Commas</button>" + "<br>"
-                + "<button id='incorrect4' class='choice'>Parentheses</button>" + "<br>";
+                + "<button id='incorrect4' class='choice-1'>Curly Brackets</button>" + "<br>" + "<button id='incorrect4' class='choice-1'>Commas</button>" + "<br>"
+                + "<button id='incorrect4' class='choice-1'>Parentheses</button>" + "<br>";
                 
                 var correctA = document.querySelector('#correct4');
-                var incorrectA = document.querySelector('#incorrect4');
                 console.log(correctA);
 
                 document.getElementById('correct4').onclick = function() {
+                    feedbackC();
                     title.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:"
-                    answers.innerHTML = "<button id='incorrect3' class='choice'>JavaScript</button>" + "<br>" 
-                    + "<button id='correct3' class='choice'>Console Log</button>" + "<br>" + "<button id='incorrect3' class='choice'>Terminal/Bash</button>" + "<br>"
-                    + "<button id='correct3' class='choice'>For Loops</button>" + "<br>";
+                    answers.innerHTML = "<button id='incorrect5' class='choice-1'>JavaScript</button>" + "<br>" 
+                    + "<button id='correct5' class='choice'>Console Log</button>" + "<br>" + "<button id='incorrect5' class='choice-1'>Terminal/Bash</button>" + "<br>"
+                    + "<button id='incorrect5' class='choice-1'>For Loops</button>" + "<br>";
                     
-                    var correctA = document.querySelector('#correct4');
-                    var incorrectA = document.querySelector('#incorrect4');
+                    var correctA5 = document.querySelector('#correct5');
+                    var incorrectA = document.querySelector('.choice-1');
                     console.log(correctA);
+
+                    correctA5.addEventListener("click", function() {
+                        //clearInterval(timeInterval)
+                        // CLOSE GAME AND GO TO ENTER SCORE
+                        title.textContent = "Your Score is " + timeLeft + "! Enter Your Initials"
+                        rightWrong.textContent = ''
+                        clearInterval(timeInterval)
+                        answers.innerHTML = "<input id='score' class'score-form'/>" + "<button class='choice-1' onClick='window.location.reload();'>Enter</button>";
+                    });
+
+
                 };
             };
         };
     };
 };
-
-var countdown = function() {
-    var timeLeft = 60;
+var endGame = function() {
+    
+};
+/*var countdown = function() {
 
     var timeInterval = setInterval(function() {
         if (timeLeft > 0) {
@@ -86,8 +113,11 @@ var countdown = function() {
         } else {
             clearInterval(timeInterval)
             // CLOSE GAME AND GO TO ENTER SCORE
+            title.textContent = "Your Score is " + timeLeft + "! Enter Your Initials"
+            rightWrong.textContent = ''
+            answers.innerHTML = "<input id='score' class'score-form'/>" + "<button class='choice' onClick='window.location.reload();'>Enter</button>";
         }
     }, 1000);
 };
 
-startBtn.addEventListener("click", countdown);
+startBtn.addEventListener("click", countdown);*/
