@@ -7,5 +7,5 @@ HTML, CSS, JS
 A quiz about js coding that when finished, prompts users for their initials, then saves their score to their name that can be viewed later.
 
 ## ScreenShots
-![challenge-4-pic1](./challenge-4-pic1)
-![challenge-4-pic2](./challenge-4-pic2)
+![screenshot1](./challenge-4-pic1)
+![screenshot2](./challenge-4-pic2)
