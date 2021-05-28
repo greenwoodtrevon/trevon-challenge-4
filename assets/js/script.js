@@ -37,12 +37,15 @@ document.getElementById('start').onclick = function() {
     + "<button id='incorrect1' class='choice-1'>Numbers</button>" + "<br>";
     
     var correctA1 = document.querySelector('#correct1');
-    var incorrectA = document.querySelector('.choice-1');
-    console.log(correctA1);
-
-    incorrectA.addEventListener("click", function() {
+    var incorrectA = document.querySelector('.answers');
+  
+    incorrectA.addEventListener("click", function(event) {
+        if (event.target.className === "choice-1") {
+            console.log('feedback')
         timeLeft -= 10;
-        feedbackI();
+        feedbackI(); 
+        }
+        
     });
     
     document.getElementById('correct1').onclick = function() {
@@ -92,7 +95,19 @@ document.getElementById('start').onclick = function() {
                         title.textContent = "Your Score is " + timeLeft + "! Enter Your Initials"
                         rightWrong.textContent = ''
                         clearInterval(timeInterval)
-                        answers.innerHTML = "<input id='score' class'score-form'/>" + "<button class='choice-1' onClick='window.location.reload();'>Enter</button>";
+                        answers.innerHTML = "<input id='initials' class'score-form'/>" + "<button id='enter-score' class='choice'>Enter</button>";
+                        
+                        
+                        document.getElementById('enter-score').onclick = function() {
+                            var initials = document.querySelector('#initials').value;
+                            console.log(initials);
+                            var tempObject = {initials, timeLeft}
+                            var highScores = JSON.parse(localStorage.getItem("High-Score")) || []
+                            highScores.push(tempObject);
+                            localStorage.setItem('High-Score', JSON.stringify(highScores))
+                            
+                            window.location.reload();
+                        };
                     });
 
 
@@ -101,9 +116,7 @@ document.getElementById('start').onclick = function() {
         };
     };
 };
-var endGame = function() {
-    
-};
+
 /*var countdown = function() {
 
     var timeInterval = setInterval(function() {
